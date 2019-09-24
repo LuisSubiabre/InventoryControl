@@ -36,3 +36,21 @@ ALTER TABLE links
     MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
 
 DESCRIBE links;
+
+-- SUPPLIERS TABLE
+CREATE TABLE suppliers (
+    id INT(11) NOT NULL,
+    description VARCHAR(150) NOT NULL,
+    contact VARCHAR(150) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(100) NOT NULL,
+    adress VARCHAR(100) NOT NULL,
+    user_id INT(11),
+    created_at timestamp NOT NULL DEFAULT current_timestamp,
+    CONSTRAINT fk_userSuppliers FOREIGN KEY(user_id) REFERENCES users(id)
+);
+ALTER TABLE suppliers
+    ADD PRIMARY KEY (id);
+
+ALTER TABLE suppliers
+    MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;

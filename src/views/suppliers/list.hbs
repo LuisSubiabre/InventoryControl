@@ -1,0 +1,68 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-4 mx-auto">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h3>Suppliers</h3>
+                    <h4></h4>
+                    <a href="/suppliers/add" class="btn btn-primary m-4">
+                        Create One!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container p-4">
+    <div class="row">
+        {{#each suppliers}}
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <a href="{{url}}" target="_blank">
+                            <h3 class="card-title text-uppercase">
+                                {{title}}
+                            </h3>
+                        </a>
+                        <p>{{description}}</p>
+                        <p>{{timeago created_at}}</p>
+                        <a href="javascript:preguntar({{id}},'{{description}}')" class="btn btn-danger">Delete</a>
+                        <a href="/suppliers/edit/{{id}}" class="btn btn-secondary">Edit</a>
+                    </div>
+                </div>
+            </div>
+            {{else}}
+            <div class="col-md-4 mx-auto">
+                <div class="card card-body text-center">
+                    <p>There are not suppliers save yet.</p>
+                    <a href="/suppliers/add">Create One!</a>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div> 
+
+<!--Delete button will redirect to the href of the element with 'id = caller-id' property in this modal-->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" caller-id="" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body confirm-delete">
+        This action is permanent!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <a href="delete/{{id}})" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+function preguntar(idSupplier,name){
+   eliminar=confirm("¿Deseas eliminar este registro? "+name);
+   if (eliminar)
+   //Redireccionamos si das a aceptar
+     window.location.href="/suppliers/delete/"+idSupplier+""
+}
+</script> 
+
