@@ -42,21 +42,6 @@
     </div>
 </div> 
 
-<!--Delete button will redirect to the href of the element with 'id = caller-id' property in this modal-->
-<div class="modal fade" id="confirmDeleteModal" tabindex="-1" caller-id="" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body confirm-delete">
-        This action is permanent!
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <a href="delete/{{id}})" class="btn btn-danger">Delete</a>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script type="text/javascript">
 function preguntar(idSupplier,name){
    eliminar=confirm("¿Deseas eliminar este registro? "+name);

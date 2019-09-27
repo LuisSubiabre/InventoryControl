@@ -1,7 +1,6 @@
 body {
     background: #f5f6f5;
     font-family: 'Oswald', sans-serif;
-    overflow: hidden; 
 }
 
 .index {
@@ -26,7 +25,10 @@ body {
     margin: 0;
     padding: 0;
 }
-
+.file {
+    visibility: hidden;
+    position: absolute;
+}
 @media (min-width: 992px){
     .masthead h1 {
         font-size: 5.5rem;

@@ -28,12 +28,16 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs');
 
 // middlewares
-  app.use(session({
+
+//middlewares2
+app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: false,
     store: new MySQLStore(database)
   }));
+
+
 
 app.use(flash());
 app.use(morgan('dev'));
@@ -41,7 +45,6 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 // global variables
 app.use((req, res, next) => {
@@ -56,6 +59,7 @@ app.use(require('./routes/index.js'));
 app.use(require('./routes/authentication.js'));
 app.use('/links', require('./routes/links.js'));
 app.use('/suppliers', require('./routes/suppliers.js'));
+app.use('/locations', require('./routes/locations.js'));
 
 // public files
 app.use(express.static(path.join(__dirname, 'public')));
