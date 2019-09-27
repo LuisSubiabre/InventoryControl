@@ -60,6 +60,7 @@ app.use(require('./routes/authentication.js'));
 app.use('/links', require('./routes/links.js'));
 app.use('/suppliers', require('./routes/suppliers.js'));
 app.use('/locations', require('./routes/locations.js'));
+app.use('/categories', require('./routes/categories.js'));
 
 // public files
 app.use(express.static(path.join(__dirname, 'public')));
