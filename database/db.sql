@@ -59,10 +59,24 @@ ALTER TABLE suppliers
 CREATE TABLE locations (
     id INT(11) NOT NULL,
     description VARCHAR(150) NOT NULL,
-    photo VARCHAR(255)
+    photo VARCHAR(255),
+    created_at timestamp NOT NULL DEFAULT current_timestamp,
 );
 ALTER TABLE locations
     ADD PRIMARY KEY (id);
 
 ALTER TABLE locations
+    MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
+
+-- CATEGORIES TABLE
+CREATE TABLE categories (
+    id INT(11) NOT NULL,
+    name VARCHAR(150) NOT NULL,
+    keyName VARCHAR(3) NOT NULL,
+    created_at timestamp NOT NULL DEFAULT current_timestamp
+);
+ALTER TABLE categories
+    ADD PRIMARY KEY (id);
+
+ALTER TABLE categories
     MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
