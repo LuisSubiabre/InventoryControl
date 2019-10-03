@@ -60,7 +60,7 @@ CREATE TABLE locations (
     id INT(11) NOT NULL,
     description VARCHAR(150) NOT NULL,
     photo VARCHAR(255),
-    created_at timestamp NOT NULL DEFAULT current_timestamp,
+    created_at timestamp NOT NULL DEFAULT current_timestamp
 );
 ALTER TABLE locations
     ADD PRIMARY KEY (id);
@@ -73,7 +73,7 @@ CREATE TABLE categories (
     id INT(11) NOT NULL,
     name VARCHAR(150) NOT NULL,
     keyName VARCHAR(3) NOT NULL,
-    lastCode int(11),
+    lastCode int(11) DEFAULT 1,
     created_at timestamp NOT NULL DEFAULT current_timestamp
 );
 ALTER TABLE categories
@@ -81,6 +81,19 @@ ALTER TABLE categories
 
 ALTER TABLE categories
     MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
+
+-- STATUS TABLE
+CREATE TABLE status (
+    id INT(11) NOT NULL,
+    description VARCHAR(150) NOT NULL,
+    created_at timestamp NOT NULL DEFAULT current_timestamp
+);
+ALTER TABLE status
+    ADD PRIMARY KEY (id);
+
+ALTER TABLE status
+    MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
+
 
  -- INVENTORY TABLE
 CREATE TABLE inventory (
@@ -109,16 +122,4 @@ ALTER TABLE inventory
     ADD PRIMARY KEY (id);
 
 ALTER TABLE inventory
-    MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
-
--- STATUS TABLE
-CREATE TABLE status (
-    id INT(11) NOT NULL,
-    description VARCHAR(150) NOT NULL,
-    created_at timestamp NOT NULL DEFAULT current_timestamp
-);
-ALTER TABLE status
-    ADD PRIMARY KEY (id);
-
-ALTER TABLE status
     MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
