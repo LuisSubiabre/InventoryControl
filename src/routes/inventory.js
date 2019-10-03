@@ -40,7 +40,7 @@ router.post('/add', isLoggedIn, upload.single('avatar'), async (req, res) => {
         serialNumber,
         invoice,
         keyName: keyNamePool,
-        numCode: lastCode + 1,
+        numCode: lastCode,
         brand,
         user_id: req.user.id,
         photo: req.file.filename,
