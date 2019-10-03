@@ -61,6 +61,8 @@ app.use('/links', require('./routes/links.js'));
 app.use('/suppliers', require('./routes/suppliers.js'));
 app.use('/locations', require('./routes/locations.js'));
 app.use('/categories', require('./routes/categories.js'));
+app.use('/inventory', require('./routes/inventory.js'));
+app.use('/status', require('./routes/status.js'));
 
 // public files
 app.use(express.static(path.join(__dirname, 'public')));

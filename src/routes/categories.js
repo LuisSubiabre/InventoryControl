@@ -19,6 +19,7 @@ router.post('/add', isLoggedIn, async (req, res) => {
     console.log(req.body);
     const newSCategorie = {
         name: description,
+        lastCode: 0,
         keyName
     };
     await pool.query('INSERT INTO categories set ?', [newSCategorie]);

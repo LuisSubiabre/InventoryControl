@@ -1,0 +1,48 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-4 mx-auto">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h3>Inventory</h3>
+                    <h4></h4>
+                    <a href="/inventory/add" class="btn btn-primary m-4">
+                        Create One!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container p-4">
+    <div class="row">
+        {{#each inventory}}
+        <div class="card text-center">
+        <div class="card" style="width: 18rem;">
+            <img src="/uploads/inventory/{{photo}}" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{name}}</h5>
+                <p>{{timeago created_at}}</p>
+                        <a href="javascript:preguntar({{id}},'{{name}}')" class="btn btn-danger">Delete</a>
+                        <a href="/inventory/edit/{{id}}" class="btn btn-secondary">Edit</a>
+            </div>
+        </div>
+        </div>
+        {{else}}
+        <div class="col-md-4 mx-auto">
+            <div class="card card-body text-center">
+                <p>There are not products save yet.</p>
+                <a href="/inventory/add">Create One!</a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<script type="text/javascript">
+function preguntar(idProduct,name){
+   toDelete=confirm("you are sure to delete this item? "+name);
+   if (toDelete)
+   //Redireccionamos si das a aceptar
+     window.location.href="/inventory/delete/"+idProduct+""
+}
+</script> 

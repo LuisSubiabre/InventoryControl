@@ -5,19 +5,19 @@
                 <div class="card-body">
                     <form action="/suppliers/edit/{{supplier.id}}" method="POST">
                         <div class="form-group">
-                            <input type="text" value="{{supplier.description}}" class="form-control" name="description" placeholder="Name" autofocus>
+                            <input type="text" value="{{supplier.description}}" class="form-control" name="description" placeholder="Name" style="text-transform: uppercase" autofocus>
                         </div>
                         <div class="form-group">
-                            <input type="text" value="{{supplier.contact}}" class="form-control" name="contact" placeholder="Contact Name" autofocus>
+                            <input type="text" value="{{supplier.contact}}" class="form-control" name="contact" placeholder="Contact Name" style="text-transform: uppercase">
                         </div>
                         <div class="form-group">
                             <input type="email" value="{{supplier.email}}" class="form-control" name="email" placeholder="email">
                         </div>
                         <div class="form-group">
-                            <input type="text" value="{{supplier.phone}}" class="form-control" name="phone" placeholder="Phone">
+                            <input type="text" value="{{supplier.phone}}" class="form-control" name="phone" style="text-transform: uppercase" placeholder="Phone">
                         </div>
                         <div class="form-group">
-                            <input type="text" value="{{supplier.adress}}" class="form-control" name="adress" placeholder="Adress">
+                            <input type="text" value="{{supplier.adress}}" class="form-control" name="adress" style="text-transform: uppercase" placeholder="Adress">
                         </div>
                         <div class="form-group">
                             <button class="btn btn-success btn-block">

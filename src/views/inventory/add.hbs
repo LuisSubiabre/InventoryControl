@@ -1,0 +1,122 @@
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/inventory/add" method="POST" name="f1" enctype="multipart/form-data">
+                        <div class="div form-group">
+                            <label><b>CATEGORIE:</b></label>
+                            <select name="categories" id="categories" class="form-control" onfocus="generarKey()" onchange="generarKey()" style="text-transform: uppercase" autofocus>
+                                {{#each categories}}
+                                <option id="{{name}}">{{name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="description" style="text-transform: uppercase" placeholder="Description">
+                        </div>
+                        <div class="div form-group">
+                            <label><b>SUPPLIER</b></label>
+                            <select name="suppliers" id="" class="form-control" style="text-transform: uppercase">
+                                {{#each suppliers}}
+                                <option value="{{id}}">{{description}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="div form-group">
+                            <label><b>LOCATION</b></label>
+                            <select name="locations" id="" class="form-control" style="text-transform: uppercase">
+                                {{#each locations}}
+                                <option value="{{id}}">{{description}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="serialNumber" placeholder="serial Number" style="text-transform: uppercase">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="invoice" placeholder="Invoice" style="text-transform: uppercase">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="brand" placeholder="Brand" style="text-transform: uppercase">
+                        </div>
+                        <div class="div form-group">
+                            <label><b>PRODUCTS STATUS</b></label>
+                            <select name="status" id="" class="form-control" style="text-transform: uppercase">
+                                {{#each status}}
+                                <option value="{{id}}">{{description}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+
+                        <fieldset disabled>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="keyName" placeholder="Product Code" style="text-transform: uppercase">
+                            </div>
+                        </fieldset> 
+                        <div class="form-group">
+                            <input type="file" name="avatar" class="file" accept="image/*" required>
+                            <div class="input-group my-3">
+                                <input type="text" class="form-control" disabled placeholder="Upload File" id="file">
+                                <div class="input-group-append">
+                                    <button type="button" class="browse btn btn-primary">Browse...</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="ml-2 col-sm-6">
+                                <img src="/img/80x80.png" id="preview" class="img-thumbnail">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<form action="" method="POST" name="f2">
+ <select name="categories2" id="categories2" class="invisible">
+                                {{#each categories}}
+                                <option id="{{lastCode}}" disabled>{{lastCode}}</option>
+                                {{/each}}
+                            </select>
+</form>
+<script>
+    $(document).on("click", ".browse", function () {
+        var file = $(this).parents().find(".file");
+        file.trigger("click");
+    });
+    $('input[type="file"]').change(function (e) {
+        var fileName = e.target.files[0].name;
+        $("#file").val(fileName);
+
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("preview").src = e.target.result;
+        };
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    });
+</script>
+<script>
+    function generarKey() {
+        var x = document.getElementById("categories").selectedIndex;
+        document.getElementById("categories2").selectedIndex = x;
+        document.ready = document.getElementById("categories2");
+
+        let name = document.f1.categories.value;
+        let newKey = name.substr(0, 3);
+        document.f1.keyName.value = newKey.toUpperCase() + document.f2.categories2.value;
+    }
+</script>
